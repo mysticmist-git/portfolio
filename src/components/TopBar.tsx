@@ -1,13 +1,13 @@
 import { Menu, X } from "lucide-react";
-import type { TopbarMenuLinkConfig } from "../types";
 import { DialogHTMLAttributes, useState } from "react";
+import type { TopbarMenuLinkConfig } from "../types";
 import { clsx } from "../utils";
 
 type TopBarProps = {
   links?: TopbarMenuLinkConfig[];
 };
 
-export type TopbarMenuLinkProps = {
+type TopbarMenuLinkProps = {
   linkConfig: TopbarMenuLinkConfig;
 };
 
