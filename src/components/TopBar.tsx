@@ -1,7 +1,8 @@
 import { Menu, X } from "lucide-react";
 import { DialogHTMLAttributes, useState } from "react";
-import type { TopbarMenuLinkConfig } from "../types";
-import { clsx } from "../utils";
+
+import type { TopbarMenuLinkConfig } from "src/types";
+import { clsx } from "src/utils";
 
 type TopBarProps = {
   links?: TopbarMenuLinkConfig[];
@@ -51,10 +52,8 @@ export function TopBar(props: TopBarProps) {
   const { links = [] } = props;
 
   const [menuOpen, setMenuOpen] = useState(false);
-  console.log("menuOpen:", menuOpen);
 
   function toggleMenu(open?: boolean) {
-    console.log("open:", open);
     if (typeof open === "boolean") {
       setMenuOpen(open);
     } else {
@@ -63,12 +62,12 @@ export function TopBar(props: TopBarProps) {
   }
 
   return (
-    <header className="px-8 py-4 flex flex-row justify-between items-center bg-zinc-900 min-h-8">
-      <a href="#" className="text-white text-xl font-bold font-mr-dafoe">
+    <header className="px-8 py-4 flex flex-row justify-between items-center bg-zinc-50 min-h-8">
+      <a href="#" className="text-zinc-900 text-xl font-bold font-mr-dafoe">
         Vh
       </a>
       <nav className="relative">
-        <button className="text-white" onClick={() => toggleMenu()}>
+        <button className="text-zinc-900" onClick={() => toggleMenu()}>
           <Menu />
         </button>
         <div

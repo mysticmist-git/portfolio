@@ -136,4 +136,7 @@
   --font-poppins-bold-italic: "Poppins", sans-serif;
   --font-poppins-extrabold-italic: "Poppins", sans-serif;
   --font-poppins-black-italic: "Poppins", sans-serif;
+
+  --default-font-family: "Poppins", sans-serif;
 }
+

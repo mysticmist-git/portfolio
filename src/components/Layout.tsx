@@ -1,7 +1,8 @@
 import { Outlet } from "react-router";
 import pick from "lodash/pick";
-import { TopbarMenuLinkConfig } from "../types";
-import { TopBar } from "./TopBar";
+
+import { TopbarMenuLinkConfig } from "src/types";
+import { TopBar } from "src/components/TopBar";
 
 type LayoutProps = {
   links?: TopbarMenuLinkConfig[];
