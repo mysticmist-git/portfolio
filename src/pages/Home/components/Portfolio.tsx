@@ -4,9 +4,10 @@ import PortfolioCard from "./PortfolioCard";
 export type ProjectInfo = {
   key?: string;
   name: string;
-  description: string;
-  tags: string[];
-  url: string;
+  description?: string;
+  tags?: string[];
+  url?: string;
+  thumbnail?: string;
 };
 
 type PortfolioProps = {

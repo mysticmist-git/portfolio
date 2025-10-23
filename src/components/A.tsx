@@ -1,9 +1,9 @@
 import { flow } from "lodash";
-import { ButtonHTMLAttributes } from "react";
+import { AnchorHTMLAttributes, DetailedHTMLProps } from "react";
 import { withDefaultClass, withVariantClasses } from "src/utils/fp/component";
 import { clsx } from "src/utils/css";
 
-export type ButtonVariant =
+export type AVariant =
   | "primary"
   | "secondary"
   | "outline"
@@ -12,17 +12,20 @@ export type ButtonVariant =
   | "danger"
   | "warning";
 
-export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: ButtonVariant;
+export type AProps = DetailedHTMLProps<
+  AnchorHTMLAttributes<HTMLAnchorElement>,
+  HTMLAnchorElement
+> & {
+  variant?: AVariant;
 };
 
-const variantClasses: Partial<Record<ButtonVariant, string>> = {
+const variantClasses: Partial<Record<AVariant, string>> = {
   primary: "bg-zinc-900 text-white",
   secondary: "bg-zinc-100 text-zinc-900",
   outline: "border border-zinc-900 text-zinc-900",
 };
 
-function ButtonComponent(props: ButtonProps) {
+function AComponent(props: AProps) {
   const { children, className, variant = "primary", ...rest } = props;
 
   const chosenVariantClass = variantClasses[variant];
@@ -30,17 +33,19 @@ function ButtonComponent(props: ButtonProps) {
   const classes = clsx(chosenVariantClass, className);
 
   return (
-    <button className={classes} {...rest}>
+    <a className={classes} {...rest}>
       {children}
-    </button>
+    </a>
   );
 }
 
 const transform = flow(
-  withDefaultClass("rounded-sm p-1 px-2 flex justify-center items-center gap-1"),
+  withDefaultClass(
+    "rounded-sm p-1 px-2 flex justify-center items-center gap-1",
+  ),
   withVariantClasses(variantClasses),
 );
 
-const Button = transform(ButtonComponent) as typeof ButtonComponent;
+const A = transform(AComponent) as typeof AComponent;
 
-export default Button;
+export default A;
