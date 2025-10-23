@@ -1,43 +1,30 @@
-import {
-  ComponentType,
-  HtmlHTMLAttributes,
-} from "react";
-import AboutMeCard from "./components/AboutMeCard";
+import { DetailedHTMLProps, HTMLAttributes } from "react";
 
-function H2(props: HtmlHTMLAttributes<HTMLHeadingElement>) {
-  return <h2 className="text-xl font-bold" {...props} />;
-}
+import AboutMeCard from "./components/AboutMeCard";
+import Section from "src/components/Section";
+import { speardProps } from "src/utils/component";
 
 export type InfoBlock = {
+  key: string;
   title: string;
   content: string;
 };
 
-type AboutMeProps = HtmlHTMLAttributes<HTMLDivElement> & {
+type AboutMeProps = DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> & {
   infoBlocks?: InfoBlock[];
 };
-
-function speardProps<Props extends object>(Component: ComponentType<Props>) {
-  return function (props: Props) {
-    return <Component {...props} />;
-  };
-}
 
 function AboutMe(props: AboutMeProps) {
   const { infoBlocks = [], ...rest } = props;
 
+  const title = "ABOUT ME";
+  const subTitle =
+    "A software engineer who thrives on challenges and passionate about creating impactful digital experiences";
+
   return (
-    <section
-      className="py-20 flex flex-col text-center gap-4 justify-start items-center bg-zinc-900 px-8 min-h-[400px] text-white"
-      {...rest}
-    >
-      <H2>ABOUT ME</H2>
-      <p>
-        A software engineer who thrives on challenges and passionate about
-        creating impactful digital experiences
-      </p>
+    <Section {...rest} title={title} subTitle={subTitle}>
       {infoBlocks.map(speardProps(AboutMeCard))}
-    </section>
+    </Section>
   );
 }
 

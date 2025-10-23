@@ -1,13 +1,13 @@
-import { HtmlHTMLAttributes } from "react";
+import { DetailedHTMLProps, HTMLAttributes } from "react";
+import { H3 } from "src/components/headings/H3";
 
-export type AboutMeCardProps = {
+export type AboutMeCardProps = DetailedHTMLProps<
+  HTMLAttributes<HTMLElement>,
+  HTMLElement
+> & {
   title: string;
   content: string;
 };
-
-function H3 (props: HtmlHTMLAttributes<HTMLHeadingElement>) {
-  return <h3 className="font-bold text-lg" {...props} />
-}
 
 function AboutMeCard(props: AboutMeCardProps) {
   const { title, content } = props;

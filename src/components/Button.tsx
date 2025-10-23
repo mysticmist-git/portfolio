@@ -1,5 +1,7 @@
+import { flow } from "lodash";
 import { ButtonHTMLAttributes } from "react";
-import { clsx } from "src/utils";
+import { withDefaultClass, withVariantClasses } from "src/utils/fp/component";
+import { clsx } from "src/utils/css";
 
 export type ButtonVariant =
   | "primary"
@@ -19,16 +21,12 @@ const variantClasses: Partial<Record<ButtonVariant, string>> = {
   outline: "border border-zinc-900 text-zinc-900",
 };
 
-function Button(props: ButtonProps) {
+function ButtonComponent(props: ButtonProps) {
   const { children, className, variant = "primary", ...rest } = props;
 
   const chosenVariantClass = variantClasses[variant];
 
-  const classes = clsx(
-    "border rounded-sm p-1 px-2 flex items-center gap-1",
-    chosenVariantClass,
-    className,
-  );
+  const classes = clsx(chosenVariantClass, className);
 
   return (
     <button className={classes} {...rest}>
@@ -36,5 +34,12 @@ function Button(props: ButtonProps) {
     </button>
   );
 }
+
+const transform = flow(
+  withDefaultClass("border rounded-sm p-1 px-2 flex items-center gap-1"),
+  withVariantClasses(variantClasses),
+);
+
+const Button = transform(ButtonComponent);
 
 export default Button;

@@ -2,7 +2,7 @@ import { Menu, X } from "lucide-react";
 import { DialogHTMLAttributes, useState } from "react";
 
 import type { TopbarMenuLinkConfig } from "src/types";
-import { clsx } from "src/utils";
+import { clsx } from "src/utils/css";
 
 type TopBarProps = {
   links?: TopbarMenuLinkConfig[];
@@ -81,7 +81,7 @@ export function TopBar(props: TopBarProps) {
         >
           <ul>
             {links.map((link) => (
-              <li>
+              <li key={link.link}>
                 <TopbarMenuLink linkConfig={link} />
               </li>
             ))}
@@ -98,7 +98,7 @@ export function TopBar(props: TopBarProps) {
         <nav className="pt-8">
           <ul>
             {links.map(({ label, link }) => (
-              <li className="border-b text-xl pt-2">
+              <li key={link} className="border-b text-xl pt-2">
                 <a href={link}>{label}</a>
               </li>
             ))}
