@@ -40,6 +40,6 @@ const transform = flow(
   withVariantClasses(variantClasses),
 );
 
-const Button = transform(ButtonComponent);
+const Button = transform(ButtonComponent) as typeof ButtonComponent;
 
 export default Button;
