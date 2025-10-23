@@ -2,7 +2,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route } from "react-router";
 import { Routes } from "react-router";
 
-import Home from "./pages/Home.tsx";
+import Home from "./pages/Home/Home.tsx";
 import Layout from "./components/Layout.tsx";
 import { TopbarMenuLinkConfig } from "./types.ts";
 
