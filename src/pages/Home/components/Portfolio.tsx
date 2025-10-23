@@ -1,7 +1,5 @@
 import Section from "src/components/Section";
 import PortfolioCard from "./PortfolioCard";
-import { speardProps } from "src/utils/component";
-import { clsx } from "src/utils/css";
 
 export type ProjectInfo = {
   key?: string;
