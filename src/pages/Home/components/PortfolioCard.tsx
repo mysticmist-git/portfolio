@@ -9,8 +9,6 @@ type PortfolioCardProps = ProjectInfo & HTMLAttributes<HTMLElement>;
 function PortfolioCardComponent(props: PortfolioCardProps) {
   const { name, description, tags = [], thumbnail, url, ...rest } = props;
 
-  console.log("thumbnail:", thumbnail);
-
   return (
     <article
       {...rest}
