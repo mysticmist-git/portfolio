@@ -13,10 +13,11 @@ type TopBarProps = {
 
 type TopbarMenuLinkProps = {
   linkConfig: TopbarMenuLinkConfig;
+  toggleMenu: (value: boolean) => void;
 };
 
 export function TopbarMenuLink(props: TopbarMenuLinkProps) {
-  const { linkConfig } = props;
+  const { linkConfig, toggleMenu } = props;
 
   const { label, link } = linkConfig;
 
@@ -85,7 +86,7 @@ export function TopBar(props: TopBarProps) {
           <ul>
             {links.map((link) => (
               <li key={link.link}>
-                <TopbarMenuLink linkConfig={link} />
+                <TopbarMenuLink linkConfig={link} toggleMenu={toggleMenu} />
               </li>
             ))}
           </ul>
