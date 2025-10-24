@@ -1,4 +1,7 @@
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
+
+
 import { DialogHTMLAttributes, useState } from "react";
 
 import type { TopbarMenuLinkConfig } from "src/types";
@@ -10,17 +13,18 @@ type TopBarProps = {
 
 type TopbarMenuLinkProps = {
   linkConfig: TopbarMenuLinkConfig;
+  toggleMenu: (value: boolean) => void;
 };
 
 export function TopbarMenuLink(props: TopbarMenuLinkProps) {
-  const { linkConfig } = props;
+  const { linkConfig, toggleMenu } = props;
 
   const { label, link } = linkConfig;
 
   return (
-    <a href={link} className="text-white">
+    <Link to={link} className="text-black hover:underline transition-colors duration-200" onClick={() => toggleMenu(false)}>
       {label}
-    </a>
+    </Link>
   );
 }
 
@@ -35,10 +39,10 @@ export function Modal(props: ModalProps) {
   return (
     <dialog
       {...rest}
-      className={clsx(className, "inset-0 w-screen h-screen p-6")}
+      className={clsx(className, "inset-0 w-screen h-screen bg-zinc-50 p-6 transition-transform duration-300 transform scale-100 text-black")}
     >
       <div className="flex justify-between">
-        {!!title && <span className="text-2xl font-bold">{title}</span>}
+        {!!title && <span className="text-3xl font-bold text-black">{title}</span>}
         <button className="cursor-pointer" onClick={onModalClose}>
           <X size={32} />
         </button>
@@ -82,7 +86,7 @@ export function TopBar(props: TopBarProps) {
           <ul>
             {links.map((link) => (
               <li key={link.link}>
-                <TopbarMenuLink linkConfig={link} />
+                <TopbarMenuLink linkConfig={link} toggleMenu={toggleMenu} />
               </li>
             ))}
           </ul>
@@ -98,8 +102,8 @@ export function TopBar(props: TopBarProps) {
         <nav className="pt-8">
           <ul>
             {links.map(({ label, link }) => (
-              <li key={link} className="border-b text-xl pt-2">
-                <a href={link}>{label}</a>
+              <li key={link} className="border-b text-xl pt-2 text-black hover:text-gray-700 transition-colors duration-200">
+                <Link to={link} onClick={() => setMenuOpen(false)}>{label}</Link>
               </li>
             ))}
           </ul>
