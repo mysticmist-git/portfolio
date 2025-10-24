@@ -13,9 +13,9 @@ function AboutMeCard(props: AboutMeCardProps) {
   const { title, content } = props;
 
   return (
-    <article className="bg-zinc-50 text-zinc-900 rounded-sm p-2">
-      <H3>{title}</H3>
-      <p>{content}</p>
+    <article className="bg-zinc-800 text-zinc-100 rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow duration-300">
+      <H3 className="text-lg font-bold mb-2">{title}</H3>
+      <p className="text-sm text-zinc-300">{content}</p>
     </article>
   );
 }
