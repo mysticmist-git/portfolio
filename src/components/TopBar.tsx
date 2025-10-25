@@ -22,7 +22,7 @@ export function TopbarMenuLink(props: TopbarMenuLinkProps) {
   const { label, link } = linkConfig;
 
   return (
-    <Link to={link} className="text-black hover:underline transition-colors duration-200" onClick={() => toggleMenu(false)}>
+    <Link to={link} className="text-zinc-50 hover:underline transition-colors duration-200" onClick={() => toggleMenu(false)}>
       {label}
     </Link>
   );
